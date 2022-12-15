@@ -14,6 +14,10 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
+env = environ.Env()
+# reading .env file
+environ.Env.read_env(".env")
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 load_dotenv(os.path.join(BASE_DIR, ".env"))
@@ -85,14 +89,8 @@ WSGI_APPLICATION = 'blog.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blogapi',
-        'USER': 'postgres',
-        'PASSWORD': 'db123',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
+    'default': env.db(),
 }
 
 
