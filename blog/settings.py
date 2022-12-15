@@ -122,6 +122,8 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
+CSRF_TRUSTED_ORIGINS =['https://django-blog-viri.up.railway.app',]
+
 USE_I18N = True
 
 USE_TZ = True
